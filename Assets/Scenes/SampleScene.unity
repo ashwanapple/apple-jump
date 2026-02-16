@@ -201,7 +201,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 0.8941177, b: 0.7098039, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -226,7 +226,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5.396608
+  orthographic size: 10.08
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -251,7 +251,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 6.715419, y: 4.4352007, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -456,22 +456,6 @@ CompositeCollider2D:
         Y: 79666664
       - X: 240333328
         Y: 79666664
-    - - X: 410333344
-        Y: 67000000
-      - X: 410333344
-        Y: 73000000
-      - X: 399666656
-        Y: 73000000
-      - X: 399666656
-        Y: 69666664
-      - X: 399799995
-        Y: 69666664
-      - X: 400333344
-        Y: 67000000
-      - X: 402333344
-        Y: 64333332
-      - X: 408333312
-        Y: 64333332
     - - X: 110333336
         Y: 73000000
       - X: 93000000
@@ -534,6 +518,22 @@ CompositeCollider2D:
         Y: 49666668
       - X: 440333344
         Y: 49666668
+    - - X: 410333344
+        Y: 57000000
+      - X: 410333344
+        Y: 63000000
+      - X: 399666656
+        Y: 63000000
+      - X: 399666656
+        Y: 59666668
+      - X: 399799993
+        Y: 59666668
+      - X: 400333344
+        Y: 57000000
+      - X: 402333344
+        Y: 54333332
+      - X: 408333312
+        Y: 54333332
     - - X: 80333336
         Y: 63000000
       - X: 53000000
@@ -927,14 +927,6 @@ CompositeCollider2D:
       - {x: 11.299993, y: 8.299993}
       - {x: 11.166667, y: 8.1666565}
       - {x: 11.166697, y: 7.9666667}
-    - - {x: 40.83332, y: 6.4333334}
-      - {x: 41.033337, y: 6.7000084}
-      - {x: 41.033306, y: 7.3}
-      - {x: 39.966667, y: 7.2999706}
-      - {x: 39.966694, y: 6.9666667}
-      - {x: 39.980003, y: 6.9666443}
-      - {x: 40.033337, y: 6.699995}
-      - {x: 40.23335, y: 6.4333334}
     - - {x: 30.033306, y: 6.9666667}
       - {x: 30.033306, y: 7.3}
       - {x: 27.966665, y: 7.2999706}
@@ -966,6 +958,14 @@ CompositeCollider2D:
       - {x: 42.966637, y: 5.3}
       - {x: 41.966667, y: 5.2999706}
       - {x: 41.966694, y: 4.9666667}
+    - - {x: 40.83332, y: 5.4333334}
+      - {x: 41.033337, y: 5.7000084}
+      - {x: 41.033306, y: 6.3}
+      - {x: 39.966667, y: 6.299971}
+      - {x: 39.966694, y: 5.9666667}
+      - {x: 39.980003, y: 5.9666443}
+      - {x: 40.033337, y: 5.699995}
+      - {x: 40.23335, y: 5.4333334}
     - - {x: 8.033304, y: 5.9666667}
       - {x: 8.033304, y: 6.3}
       - {x: 5.2999926, y: 6.2999926}
@@ -2172,6 +2172,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 40, y: 5, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 13
+      m_TileSpriteIndex: 13
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 42, y: 5, z: 0}
     second:
       serializedVersion: 2
@@ -2245,8 +2255,8 @@ Tilemap:
   - first: {x: 40, y: 6, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 13
-      m_TileSpriteIndex: 13
+      m_TileIndex: 3
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2313,16 +2323,6 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   - first: {x: 29, y: 7, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 3
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 40, y: 7, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 3
@@ -2744,7 +2744,7 @@ MonoBehaviour:
   CameraDistance: 10
   DeadZoneDepth: 0
   Composition:
-    ScreenPosition: {x: 0, y: 0}
+    ScreenPosition: {x: -0.28, y: 0.22}
     DeadZone:
       Enabled: 0
       Size: {x: 0.2, y: 0.2}
@@ -2785,7 +2785,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 34
-    OrthographicSize: 5.396608
+    OrthographicSize: 10.08
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -2812,7 +2812,7 @@ Transform:
   m_GameObject: {fileID: 641819744}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 6.715419, y: 4.4352007, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
