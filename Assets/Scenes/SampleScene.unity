@@ -2919,17 +2919,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.031350896, y: -0.023513198}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.0666667, y: 1.0666667}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.0313509, y: 1.0470263}
   m_EdgeRadius: 0
 --- !u!50 &765853508
 Rigidbody2D:
@@ -3005,7 +3005,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -3270222904568159399, guid: 9ad09e69f8f30fa4eb39c925669dbc57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3045,11 +3045,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   rb: {fileID: 765853508}
+  animator: {fileID: 765853513}
   moveSpeed: 5
-  jumpPower: 5
+  jumpPower: 8
   maxJumps: 2
   groundCheckPos: {fileID: 1571934489}
-  groundCheckSize: {x: 1.02, y: 0.05}
+  groundCheckSize: {x: 0.66, y: 0.02}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
