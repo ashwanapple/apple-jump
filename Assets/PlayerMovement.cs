@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
                 // button not held down = half height
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
                 jumpsRemaining--;
-                animator.SetTrigger("jump");
+                // animator.SetTrigger("jump");
             }
         }
     }
