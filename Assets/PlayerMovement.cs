@@ -1,3 +1,4 @@
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed = 5f;
     float horizontalMovement;
+    private SpriteRenderer spriteRenderer;
 
     [Header("Jumping")]
     public float jumpPower = 10f;
@@ -23,7 +25,13 @@ public class PlayerMovement : MonoBehaviour
     public float baseGravity = 2f;
     public float maxFallSpeed = 18f;
     public float fallSpeedMultiplier = 2f;
-    
+
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -31,8 +39,20 @@ public class PlayerMovement : MonoBehaviour
         GroundCheck();
         Gravity();
 
-        animator.SetFloat("yVelocity", rb.linearVelocity.y);
-        animator.SetFloat("magnitude", rb.linearVelocity.magnitude);
+        // flips sprite depending on direction
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        if (horizontalInput > 0)
+        {
+            spriteRenderer.flipX = false; // right
+        }
+        else if (horizontalInput < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+
+         animator.SetFloat("yVelocity", rb.linearVelocity.y);
+         animator.SetFloat("magnitude", rb.linearVelocity.magnitude);
     }
 
     private void Gravity()
@@ -81,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
             jumpsRemaining = maxJumps;
         }
     }
+
 
     private void OnDrawGizmosSelected()
     {
