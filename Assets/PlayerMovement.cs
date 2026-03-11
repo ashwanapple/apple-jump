@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed = 5f;
     float horizontalMovement;
+    private bool isKnockback = false;
     private SpriteRenderer spriteRenderer;
 
     [Header("Jumping")]
@@ -30,12 +32,16 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-    }
+    }   
 
     // Update is called once per frame
     void Update()
     {
-        rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocity.y);
+        if (!isKnockback)
+        {
+            rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocity.y);
+
+        }
         GroundCheck();
         Gravity();
 
@@ -100,6 +106,21 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpsRemaining = maxJumps;
         }
+    }
+
+
+    public void ApplyKnockback(Vector2 force, float duration = 0.2f)
+    {
+        rb.linearVelocity = Vector2.zero;
+        rb.AddForce(force, ForceMode2D.Impulse);
+        StartCoroutine(KnockBackCoroutine(duration));
+    }
+
+    private IEnumerator KnockBackCoroutine(float duration)
+    {
+        isKnockback = true;
+        yield return new WaitForSeconds(duration);
+        isKnockback = false;
     }
 
 
