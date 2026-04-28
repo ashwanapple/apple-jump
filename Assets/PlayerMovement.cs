@@ -57,8 +57,9 @@ public class PlayerMovement : MonoBehaviour
             spriteRenderer.flipX = true;
         }
 
-         animator.SetFloat("yVelocity", rb.linearVelocity.y);
-         animator.SetFloat("magnitude", rb.linearVelocity.magnitude);
+        animator.SetFloat("yVelocity", rb.linearVelocity.y);
+        animator.SetFloat("magnitude", rb.linearVelocity.magnitude);
+
     }
 
     private void Gravity()

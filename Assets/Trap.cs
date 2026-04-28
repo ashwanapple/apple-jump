@@ -6,15 +6,15 @@ public class Trap : MonoBehaviour
     public float bounceForceX = 2f;
     public int dmg = 1;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            handlePlayerBounce(collision.gameObject);
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        handlePlayerBounce(collision.gameObject);
+    //    }
+    //}
 
-    private void handlePlayerBounce(GameObject player)
+    public void handlePlayerBounce(GameObject player)
     {
         PlayerMovement pm = player.GetComponent<PlayerMovement>();
         if (pm != null)

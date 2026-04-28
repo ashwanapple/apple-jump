@@ -165,7 +165,7 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: e5213c4dddf93d220800000000000000
       internalID: 2509525192481641054
@@ -187,7 +187,7 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: dd1861001b353c270800000000000000
       internalID: 8269545360458154461
@@ -209,7 +209,7 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: 5c73161522c605a30800000000000000
       internalID: 4201977346986686405
@@ -231,7 +231,7 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: 3d046717b97ac2f70800000000000000
       internalID: 9163883627857461459
@@ -253,7 +253,7 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: d7d26fc6b48231cb0800000000000000
       internalID: -4894524065605866115
@@ -275,7 +275,7 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: a579d3152719b1f20800000000000000
       internalID: 3394466664329090906
@@ -297,7 +297,7 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: c5e73a0f098f26900800000000000000
       internalID: 676376195455221340
@@ -319,7 +319,7 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: 670c4cad206e71f40800000000000000
       internalID: 5699276753395302518
@@ -341,7 +341,7 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: 1f639de47b06d8cf0800000000000000
       internalID: -248436064017369359
@@ -363,7 +363,7 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: 5ef4d3bc87345def0800000000000000
       internalID: -84086831951556635
@@ -385,7 +385,7 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: 38d8484143c22bd40800000000000000
       internalID: 5598585888969100675
@@ -407,7 +407,7 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: 94f5a65032b4a5be0800000000000000
       internalID: -1487794113105731767
@@ -429,7 +429,7 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: 2947a681d01187360800000000000000
       internalID: 7167497554902021266
@@ -451,7 +451,7 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: 73ac0c87f58602d40800000000000000
       internalID: 5557556699432274487
@@ -890,7 +890,13 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 4, y: -3}
+        - {x: 4, y: -1}
+        - {x: -4, y: -1}
+        - {x: -4, y: -3}
+        - {x: -5, y: -7}
+        - {x: 5, y: -7}
       tessellationDetail: 0
       bones: []
       spriteID: 7bf31fb2be1401f4fa4cb1c4df47b39a
