@@ -32,24 +32,41 @@ public class PlayerHealth : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Trap trap = collision.GetComponent<Trap>();
+
         if (trap != null)
         {
-            TakeDamage(trap.dmg);
-            trap.handlePlayerBounce(gameObject);
+            if (trap.CompareTag("Spike") || trap.CompareTag("Knife"))
+            {
+                TakeDamage(trap.dmg, trap);
+                trap.handlePlayerBounce(gameObject);
+            }
+            else
+            {
+                TakeDamage(maxHealth, trap); // player is boiled, instant death
+            }
+
         }
     }
 
-    private void TakeDamage(int dmg)
+    private void TakeDamage(int dmg, Trap trap)
     {
         currentHealth -= dmg;
         healthUI.UpdateHealth(currentHealth);
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
-            // player dead
-            isSliced = true;
-       
-            //isBoiled = true;
+            if (trap.CompareTag("Spike"))
+            {
+                isSliced = true;
+            }
+            else if (trap.CompareTag("Knife"))
+            {
+                isPeeled = true;
+            }
+            else
+            {
+                isBoiled = true;
+            }
 
         }
     }
