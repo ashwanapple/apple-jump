@@ -68,6 +68,22 @@ public class PlayerHealth : MonoBehaviour
                 isBoiled = true;
             }
 
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        var rb = GetComponent<Rigidbody2D>();
+        rb.linearVelocity = Vector2.zero;
+
+        GetComponent<PlayerMovement>().enabled = false;
+        StartCoroutine(FreezeDeath());
+    }
+
+    private IEnumerator FreezeDeath()
+    {
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        animator.speed = 0f;
     }
 }
