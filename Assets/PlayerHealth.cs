@@ -14,6 +14,8 @@ public class PlayerHealth : MonoBehaviour
     private bool isPeeled;
     private bool isSliced;
 
+    public bool isDead => currentHealth <= 0;
+
     public HealthUI healthUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,7 +40,11 @@ public class PlayerHealth : MonoBehaviour
             if (trap.CompareTag("Spike") || trap.CompareTag("Knife"))
             {
                 TakeDamage(trap.dmg, trap);
-                trap.handlePlayerBounce(gameObject);
+                if (currentHealth > 0)
+                {
+                    trap.handlePlayerBounce(gameObject);
+                }
+                
             }
             else
             {
@@ -76,6 +82,7 @@ public class PlayerHealth : MonoBehaviour
     {
         var rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic;
 
         GetComponent<PlayerMovement>().enabled = false;
         StartCoroutine(FreezeDeath());
@@ -83,7 +90,18 @@ public class PlayerHealth : MonoBehaviour
 
     private IEnumerator FreezeDeath()
     {
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        yield return null;
+
+        while (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Death"))
+        {
+            yield return null;
+        }
+
+        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+        {
+            yield return null;
+        }
+        //yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         animator.speed = 0f;
     }
 }
