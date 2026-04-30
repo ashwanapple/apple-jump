@@ -82,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        if (GetComponent<PlayerHealth>().isDead) return;
+
         if (jumpsRemaining > 0)
         {
             if (context.performed)
