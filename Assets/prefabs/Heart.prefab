@@ -115,6 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c33ab3cee6c87438f285e14ce422d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  heartPrefab: {fileID: 0}
-  fullHealthSprite: {fileID: 0}
-  emptyHealthSprite: {fileID: 0}
+  heartPrefab: {fileID: 8838182132152577437}
+  fullHealthSprite: {fileID: 1064366638460245311, guid: d9cf31e8d65965141b4b09b34e38bf5e, type: 3}
+  emptyHealthSprite: {fileID: 2212710700200316489, guid: d9cf31e8d65965141b4b09b34e38bf5e, type: 3}

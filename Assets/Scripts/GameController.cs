@@ -20,18 +20,31 @@ public class GameController : MonoBehaviour
         }
         progressNum = 0;
         progressSlider.value = 0;
-        Jar.OnJarCollect += IncreaseProgressAmount;
+        progressSlider.maxValue = 3;
+        //Jar.OnJarCollect += IncreaseProgressAmount;
         
+    }
+
+    void Awake()
+    {
+        Jar.OnJarCollect += IncreaseProgressAmount;
+    }
+
+    void OnDestroy()
+    {
+        Jar.OnJarCollect -= IncreaseProgressAmount;
     }
 
     void IncreaseProgressAmount(int amount)
     {
+        Debug.Log($"IncreaseProgressAmount called, amount: {amount}, progressNum before: {progressNum}");
+
         progressNum += amount;
         progressSlider.value = progressNum;
-        if (progressNum >= 3)
-        {
-            // mark as bonus all collected
-        }
+        //if (progressNum >= 3)
+        //{
+        //    // mark as bonus all collected
+        //}
     }
 
     public void LoadNextLevel()

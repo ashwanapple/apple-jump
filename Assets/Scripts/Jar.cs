@@ -4,12 +4,17 @@ using UnityEngine;
 public class Jar : MonoBehaviour, Item
 {
     public static event Action<int> OnJarCollect;
-    public int worth = 1;
-
+    public static int worth = 1;
+    private bool isCollected = false;
 
     public void Collect()
     {
-        OnJarCollect.Invoke(worth);
-        Destroy(gameObject);
+        if (!isCollected)
+        {
+            OnJarCollect.Invoke(worth);
+            Destroy(gameObject);
+            isCollected = true;
+        }
+        
     }
 }
