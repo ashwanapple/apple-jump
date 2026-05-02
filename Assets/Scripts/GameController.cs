@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,18 +8,20 @@ public class GameController : MonoBehaviour
     public Slider progressSlider;
 
     public GameObject player;
-    //public GameObject LoadCanvas;
     public List<GameObject> levels;
     private int currentLevelIndex = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        for (int i = 0; i < levels.Count; i++)
+        {
+            levels[i].SetActive(i == 0); // first level is active
+        }
         progressNum = 0;
         progressSlider.value = 0;
         Jar.OnJarCollect += IncreaseProgressAmount;
-        // load next level
-        //LoadCanvas.SetActive(false);
+        
     }
 
     void IncreaseProgressAmount(int amount)
@@ -29,27 +30,24 @@ public class GameController : MonoBehaviour
         progressSlider.value = progressNum;
         if (progressNum >= 3)
         {
-            // Complete
-            //LoadCanvas.SetActive(true);
+            // mark as bonus all collected
         }
     }
 
-    void LoadNextLevel()
+    public void LoadNextLevel()
     {
         int nextLevelIndex = (currentLevelIndex == levels.Count - 1) ? 0 : currentLevelIndex + 1;
-        //LoadCanvas.SetActive(false);
 
-        levels[currentLevelIndex].gameObject.SetActive(false);
-        levels[nextLevelIndex].gameObject.SetActive(true);
-
+        levels[currentLevelIndex].SetActive(false);
         currentLevelIndex = nextLevelIndex;
+        levels[nextLevelIndex].SetActive(true);
 
         ResetLevel();
     }
 
-    void ResetLevel()
+    public void ResetLevel()
     {
-        player.transform.position = new Vector3(0, 0, 0);
+        player.transform.position = new Vector3(-1, 0, 0);
         progressNum = 0;
         progressSlider.value = 0;
         
