@@ -37,7 +37,6 @@ public class SecretArea : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log($"activeInHierarchy: {gameObject.activeInHierarchy}, activeSelf: {gameObject.activeSelf}");
 
             if (currentCoroutine != null)
             {

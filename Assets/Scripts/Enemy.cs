@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, Damagers
 {
     public GameObject pointA;
     public GameObject pointB;
@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     private Transform currentPoint;
     public float speed;
 
+    [Header("Hit Effects")]
+    public float bounceForceX = 3f;
     public int dmg = 1;
 
 
@@ -60,5 +62,19 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(pointA.transform.position, 0.5f);
         Gizmos.DrawWireSphere(pointB.transform.position, 0.5f);
         Gizmos.DrawLine(pointA.transform.position, pointB.transform.position);
+    }
+
+    public void handlePlayerBounce(GameObject player)
+    {
+        PlayerMovement pm = player.GetComponent<PlayerMovement>();
+        PlayerHealth ph = GetComponent<PlayerHealth>();
+
+        if (ph != null && ph.isDead) return;
+
+        if (pm != null)
+        {
+            Vector2 bounceDirection = (player.transform.position - transform.position).normalized;
+            pm.ApplyKnockback(new Vector2(bounceDirection.x * bounceForceX, player.transform.position.y));
+        }
     }
 }

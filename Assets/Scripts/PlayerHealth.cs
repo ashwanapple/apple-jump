@@ -33,8 +33,13 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.layer != LayerMask.NameToLayer("HurtBox"))
+        {
+            return;
+        }
+
         Trap trap = collision.GetComponent<Trap>();
-        //Enemy enemy = collision.GetComponent<Enemy>();
+        Enemy enemy = collision.GetComponent<Enemy>();
 
         if (trap != null)
         {
@@ -53,10 +58,11 @@ public class PlayerHealth : MonoBehaviour
             }
 
         }
-        //if (enemy)
-        //{
-        //    TakeDamage(enemy.dmg, null); 
-        //}
+        if (enemy)
+        {
+            TakeDamage(enemy.dmg, null);
+            enemy.handlePlayerBounce(gameObject);
+        }
     }
 
     private void TakeDamage(int dmg, Trap trap)
@@ -66,7 +72,12 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            if (trap.CompareTag("Spike"))
+            if (trap == null)
+            {
+                Debug.Log("Worm hit!");
+                
+            }
+            else if (trap.CompareTag("Spike"))
             {
                 isSliced = true;
             }

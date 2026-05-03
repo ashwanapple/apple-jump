@@ -37,13 +37,11 @@ public class GameController : MonoBehaviour
 
     void IncreaseProgressAmount(int amount)
     {
-        Debug.Log($"IncreaseProgressAmount called, amount: {amount}, progressNum before: {progressNum}");
-
         progressNum += amount;
         progressSlider.value = progressNum;
         //if (progressNum >= 3)
         //{
-        //    // mark as bonus all collected
+        //    // mark as bonus all collected at the end? or for main menu
         //}
     }
 

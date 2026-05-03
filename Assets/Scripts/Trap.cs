@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Trap : MonoBehaviour
+public class Trap : MonoBehaviour, Damagers
 {
     public float bounceForceY = 5f;
     public float bounceForceX = 2f;
