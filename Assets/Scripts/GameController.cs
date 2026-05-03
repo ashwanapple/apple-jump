@@ -84,6 +84,7 @@ public class GameController : MonoBehaviour
     public void ResetLevelComponents()
     {
         player.transform.position = new Vector3(-1, 0, 0);
+        // TODO: reset player health when moving to a new level
         progressNum = 0;
         progressSlider.value = 0;
         
