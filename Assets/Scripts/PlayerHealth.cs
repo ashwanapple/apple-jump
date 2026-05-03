@@ -16,12 +16,16 @@ public class PlayerHealth : MonoBehaviour
 
     public bool isDead => currentHealth <= 0;
 
+    public static event Action onPlayerDied;
+
     public HealthUI healthUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = maxHealth;
         healthUI.SetMaxHealth(maxHealth);
+
+        GameController.OnReset += ResetPlayer;
     }
 
     void Update()
@@ -91,6 +95,8 @@ public class PlayerHealth : MonoBehaviour
             }
 
             Die();
+
+            onPlayerDied.Invoke();
         }
     }
 
@@ -102,6 +108,21 @@ public class PlayerHealth : MonoBehaviour
 
         GetComponent<PlayerMovement>().enabled = false;
         StartCoroutine(FreezeDeath());
+    }
+
+    void ResetPlayer()
+    {
+        currentHealth = maxHealth;
+        healthUI.UpdateHealth(maxHealth);
+
+        isBoiled = false;
+        isPeeled = false;
+        isSliced = false;
+
+        GetComponent<PlayerMovement>().enabled = true;
+        // TODO:
+        // - need to reset the players moveableness, so undo everything in Die()
+        // - need to reset the players animations -> not dead anymore
     }
 
     private IEnumerator FreezeDeath()

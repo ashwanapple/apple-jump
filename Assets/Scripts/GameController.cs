@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,10 @@ public class GameController : MonoBehaviour
     public List<GameObject> levels;
     private int currentLevelIndex = 0;
 
+    public GameObject gameOverScreen;
+
+    public static event Action OnReset;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,8 +26,22 @@ public class GameController : MonoBehaviour
         progressNum = 0;
         progressSlider.value = 0;
         progressSlider.maxValue = 3;
-        //Jar.OnJarCollect += IncreaseProgressAmount;
+        gameOverScreen.SetActive(false);
+        PlayerHealth.onPlayerDied += GameOverScreen;
         
+    }
+
+    void GameOverScreen()
+    {
+        gameOverScreen.SetActive(true);
+    }
+
+    // resets ENTIRE level
+    public void ResetLevel()
+    {
+        gameOverScreen.SetActive(false);
+        LoadLevel(0);
+        OnReset.Invoke();
     }
 
     void Awake()
@@ -45,18 +64,24 @@ public class GameController : MonoBehaviour
         //}
     }
 
+    void LoadLevel(int level)
+    {
+        levels[currentLevelIndex].SetActive(false);
+        currentLevelIndex = level;
+        levels[level].SetActive(true);
+
+        ResetLevelComponents();
+    }
+
     public void LoadNextLevel()
     {
         int nextLevelIndex = (currentLevelIndex == levels.Count - 1) ? 0 : currentLevelIndex + 1;
-
-        levels[currentLevelIndex].SetActive(false);
-        currentLevelIndex = nextLevelIndex;
-        levels[nextLevelIndex].SetActive(true);
-
-        ResetLevel();
+        LoadLevel(nextLevelIndex);
+        
     }
 
-    public void ResetLevel()
+    // resets player and progress bar
+    public void ResetLevelComponents()
     {
         player.transform.position = new Vector3(-1, 0, 0);
         progressNum = 0;

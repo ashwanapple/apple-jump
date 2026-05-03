@@ -7,8 +7,6 @@ public class ExitToNextLevel : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            // do something
-            Debug.Log("Finished Level");
             gameController.LoadNextLevel();
         }
     }
