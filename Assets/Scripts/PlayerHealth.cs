@@ -34,6 +34,7 @@ public class PlayerHealth : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Trap trap = collision.GetComponent<Trap>();
+        //Enemy enemy = collision.GetComponent<Enemy>();
 
         if (trap != null)
         {
@@ -52,6 +53,10 @@ public class PlayerHealth : MonoBehaviour
             }
 
         }
+        //if (enemy)
+        //{
+        //    TakeDamage(enemy.dmg, null); 
+        //}
     }
 
     private void TakeDamage(int dmg, Trap trap)
