@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
         progressSlider.maxValue = 3;
         gameOverScreen.SetActive(false);
         PlayerHealth.onPlayerDied += GameOverScreen;
+        Jar.OnJarCollect += IncreaseProgressAmount;
         
     }
 
@@ -41,18 +42,8 @@ public class GameController : MonoBehaviour
     {
         gameOverScreen.SetActive(false);
         LoadLevel(0);
-        OnReset.Invoke();
     }
 
-    void Awake()
-    {
-        Jar.OnJarCollect += IncreaseProgressAmount;
-    }
-
-    void OnDestroy()
-    {
-        Jar.OnJarCollect -= IncreaseProgressAmount;
-    }
 
     void IncreaseProgressAmount(int amount)
     {
@@ -84,7 +75,7 @@ public class GameController : MonoBehaviour
     public void ResetLevelComponents()
     {
         player.transform.position = new Vector3(-1, 0, 0);
-        // TODO: reset player health when moving to a new level
+        OnReset?.Invoke();
         progressNum = 0;
         progressSlider.value = 0;
         

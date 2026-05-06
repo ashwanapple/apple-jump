@@ -7,14 +7,25 @@ public class Jar : MonoBehaviour, Item
     public static int worth = 1;
     private bool isCollected = false;
 
+    void Start()
+    {
+        GameController.OnReset += ResetItems;
+    }
+
     public void Collect()
     {
         if (!isCollected)
         {
             OnJarCollect.Invoke(worth);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             isCollected = true;
         }
         
+    }
+
+    void ResetItems()
+    {
+        gameObject.SetActive(true);
+        isCollected = false;
     }
 }

@@ -110,7 +110,7 @@ public class PlayerHealth : MonoBehaviour
         StartCoroutine(FreezeDeath());
     }
 
-    void ResetPlayer()
+    public void ResetPlayer()
     {
         currentHealth = maxHealth;
         healthUI.UpdateHealth(maxHealth);
@@ -119,10 +119,15 @@ public class PlayerHealth : MonoBehaviour
         isPeeled = false;
         isSliced = false;
 
+        var rb = GetComponent<Rigidbody2D>();
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.linearVelocity = Vector2.zero;
+
+        StopAllCoroutines();
+        animator.speed = 1f;
+        animator.Play("Idle");
+
         GetComponent<PlayerMovement>().enabled = true;
-        // TODO:
-        // - need to reset the players moveableness, so undo everything in Die()
-        // - need to reset the players animations -> not dead anymore
     }
 
     private IEnumerator FreezeDeath()

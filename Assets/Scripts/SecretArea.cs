@@ -19,6 +19,8 @@ public class SecretArea : MonoBehaviour
             hiddenColors[i] = spriteRenderers[i].color;
 
         }
+
+        GameController.OnReset += ResetHiddenArea;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -70,6 +72,20 @@ public class SecretArea : MonoBehaviour
 
         for (int i = 0; i < spriteRenderers.Length; i++) {
             spriteRenderers[i].color = fadeOut ? new Color(hiddenColors[i].r, hiddenColors[i].g, hiddenColors[i].b, 0f) : hiddenColors[i];
+        }
+    }
+
+    private void ResetHiddenArea()
+    {
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+            currentCoroutine = null;
+        }
+
+        for (int i = 0; i < spriteRenderers.Length;i++)
+        {
+            spriteRenderers[i].color = hiddenColors[i]; // restore visibility
         }
     }
 }
