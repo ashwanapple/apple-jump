@@ -62,7 +62,7 @@ public class PlayerHealth : MonoBehaviour
             }
 
         }
-        if (enemy)
+        if (enemy && !enemy.isDead)
         {
             TakeDamage(enemy.dmg, null);
             enemy.handlePlayerBounce(gameObject);
@@ -143,7 +143,6 @@ public class PlayerHealth : MonoBehaviour
         {
             yield return null;
         }
-        //yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         animator.speed = 0f;
     }
 }

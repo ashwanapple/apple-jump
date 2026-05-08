@@ -16,12 +16,14 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jumping")]
     public float jumpPower = 10f;
     public int maxJumps = 2;
+    public float jumpBoost = 5f;
     int jumpsRemaining;
 
     [Header("GroundCheck")]
     public Transform groundCheckPos;
     public Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
     public LayerMask groundLayer;
+    private bool isGrounded;
 
     [Header("Gravity")]
     public float baseGravity = 2f;
@@ -59,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("yVelocity", rb.linearVelocity.y);
         animator.SetFloat("magnitude", rb.linearVelocity.magnitude);
+        animator.SetBool("isGrounded", isGrounded);
 
     }
 
@@ -96,7 +99,9 @@ public class PlayerMovement : MonoBehaviour
             else if (context.canceled)
             {
                 // button not held down = half height
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+                //rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpBoost);
+                //jumpsRemaining--;
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpBoost);
                 jumpsRemaining--;
                 // animator.SetTrigger("jump");
             }
@@ -105,7 +110,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void GroundCheck()
     {
-        if(Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
+        isGrounded = Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer);
+        if (isGrounded)
         {
             jumpsRemaining = maxJumps;
         }
