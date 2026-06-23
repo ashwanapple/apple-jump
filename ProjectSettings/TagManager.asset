@@ -7,6 +7,7 @@ TagManager:
   - Spike
   - Knife
   - Boiled
+  - Ground
   layers:
   - Default
   - TransparentFX

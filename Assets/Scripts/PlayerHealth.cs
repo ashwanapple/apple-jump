@@ -33,6 +33,7 @@ public class PlayerHealth : MonoBehaviour
         animator.SetBool("isBoiled", isBoiled);
         animator.SetBool("isPeeled", isPeeled);
         animator.SetBool("isSliced", isSliced);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
