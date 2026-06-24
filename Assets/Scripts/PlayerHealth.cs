@@ -70,7 +70,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void TakeDamage(int dmg, Trap trap)
+    public void TakeDamage(int dmg, Trap trap)
     {
         currentHealth -= dmg;
         healthUI.UpdateHealth(currentHealth);

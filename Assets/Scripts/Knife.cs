@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Knife : MonoBehaviour
+public class Knife : Trap
 {
     bool hitGround;
     public float gravity = 2f;
@@ -9,6 +9,9 @@ public class Knife : MonoBehaviour
     public Transform groundCheckPos;
     public Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
     public LayerMask groundLayer;
+
+    
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,7 +31,6 @@ public class Knife : MonoBehaviour
 
         } else
         {
-            Debug.Log("Hit Ground!");
             Destroy(gameObject);
             
         }
@@ -44,7 +46,5 @@ public class Knife : MonoBehaviour
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
     }
-
-
 
 }

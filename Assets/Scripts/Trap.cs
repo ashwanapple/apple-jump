@@ -10,7 +10,7 @@ public class Trap : MonoBehaviour, Damagers
     public void handlePlayerBounce(GameObject player)
     {
         PlayerMovement pm = player.GetComponent<PlayerMovement>();
-        PlayerHealth ph = GetComponent<PlayerHealth>();
+        PlayerHealth ph = player.GetComponent<PlayerHealth>();
 
         if (ph != null && ph.isDead) return;
 
