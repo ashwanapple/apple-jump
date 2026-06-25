@@ -79,7 +79,7 @@ public class PlayerHealth : MonoBehaviour
         {
             if (trap == null)
             {
-                Debug.Log("Worm hit!");
+                isPeeled = true;
                 
             }
             else if (trap.CompareTag("Spike"))
