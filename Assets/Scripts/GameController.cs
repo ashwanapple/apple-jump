@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     private int currentLevelIndex = 0;
 
     public GameObject gameOverScreen;
+    public GameObject pauseMenuScreen;
 
     public static event Action OnReset;
 
@@ -27,6 +28,7 @@ public class GameController : MonoBehaviour
         progressSlider.value = 0;
         progressSlider.maxValue = 3;
         gameOverScreen.SetActive(false);
+        pauseMenuScreen.SetActive(false);
         PlayerHealth.onPlayerDied += GameOverScreen;
         Jar.OnJarCollect += IncreaseProgressAmount;
         
