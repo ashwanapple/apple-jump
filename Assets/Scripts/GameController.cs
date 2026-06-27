@@ -23,7 +23,9 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < levels.Count; i++)
         {
             levels[i].SetActive(i == 0); // first level is active
+
         }
+
         progressNum = 0;
         progressSlider.value = 0;
         progressSlider.maxValue = 3;
