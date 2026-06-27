@@ -5274,6 +5274,7 @@ MonoBehaviour:
   - {fileID: 534108338}
   - {fileID: 1387218154}
   - {fileID: 745236888}
+  fullJarSprite: {fileID: 1572456989, guid: cb132bbee39f78444ad0165d66232876, type: 3}
 --- !u!1 &1826108917
 GameObject:
   m_ObjectHideFlags: 0

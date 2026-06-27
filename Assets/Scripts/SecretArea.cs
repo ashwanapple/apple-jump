@@ -88,4 +88,9 @@ public class SecretArea : MonoBehaviour
             spriteRenderers[i].color = hiddenColors[i]; // restore visibility
         }
     }
+
+    void OnDestroy()
+    {
+        GameController.OnReset -= ResetHiddenArea;
+    }
 }

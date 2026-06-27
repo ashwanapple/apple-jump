@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    int progressNum;
+    public static int progressNum;
     public Slider progressSlider;
 
     public GameObject player;
@@ -20,9 +20,11 @@ public class GameController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        currentLevelIndex = LevelsMenuController.currentLev;
+
         for (int i = 0; i < levels.Count; i++)
         {
-            levels[i].SetActive(i == 0); // first level is active
+            levels[i].SetActive(i == currentLevelIndex);
 
         }
 
@@ -33,8 +35,18 @@ public class GameController : MonoBehaviour
         pauseMenuScreen.SetActive(false);
         PlayerHealth.onPlayerDied += GameOverScreen;
         Jar.OnJarCollect += IncreaseProgressAmount;
-        
+
+        Debug.Log("GameController Start, currentLevelIndex: " + currentLevelIndex);
+
+
     }
+
+    void OnDestroy()
+    {
+        PlayerHealth.onPlayerDied -= GameOverScreen;
+        Jar.OnJarCollect -= IncreaseProgressAmount;
+    }
+
 
     void GameOverScreen()
     {
@@ -45,7 +57,7 @@ public class GameController : MonoBehaviour
     public void ResetLevel()
     {
         gameOverScreen.SetActive(false);
-        LoadLevel(0);
+        LoadLevel(currentLevelIndex);
     }
 
 
@@ -82,6 +94,9 @@ public class GameController : MonoBehaviour
         OnReset?.Invoke();
         progressNum = 0;
         progressSlider.value = 0;
-        
+
+        Debug.Log("ResetLevelComponents called, OnReset has listeners: " + (OnReset != null));
+
+
     }
 }

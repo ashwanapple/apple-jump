@@ -25,6 +25,13 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         healthUI.SetMaxHealth(maxHealth);
 
+        
+    }
+
+    void Awake()
+    {
+        Debug.Log("PlayerHealth subscribed to OnReset");
+
         GameController.OnReset += ResetPlayer;
     }
 
@@ -129,6 +136,8 @@ public class PlayerHealth : MonoBehaviour
         animator.Play("Idle");
 
         GetComponent<PlayerMovement>().enabled = true;
+        Debug.Log("ResetPlayer called, movement enabled: " + GetComponent<PlayerMovement>().enabled);
+
     }
 
     private IEnumerator FreezeDeath()
@@ -146,4 +155,10 @@ public class PlayerHealth : MonoBehaviour
         }
         animator.speed = 0f;
     }
+
+    void OnDestroy()
+    {
+        GameController.OnReset -= ResetPlayer;
+    }
+
 }

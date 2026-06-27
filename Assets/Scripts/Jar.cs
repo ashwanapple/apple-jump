@@ -7,10 +7,6 @@ public class Jar : MonoBehaviour, Item
     public static int worth = 1;
     private bool isCollected = false;
 
-    void Start()
-    {
-        GameController.OnReset += ResetItems;
-    }
 
     public void Collect()
     {
@@ -22,6 +18,18 @@ public class Jar : MonoBehaviour, Item
         }
         
     }
+
+    void OnEnable()
+    {
+        GameController.OnReset += ResetItems;
+    }
+
+    void OnDisable()
+    {
+        GameController.OnReset -= ResetItems;
+    }
+
+    // remove Start()
 
     void ResetItems()
     {

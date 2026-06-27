@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class LevelsMenuController : MonoBehaviour
 {
     public LevelObject[] levelObjects;
-
+    public Sprite fullJarSprite;
     public static int currentLev;
     public static int unlockedLevels;
 
@@ -23,13 +23,21 @@ public class LevelsMenuController : MonoBehaviour
 
     public void Start()
     {
-        unlockedLevels = PlayerPrefs.GetInt("UnlockedLevels", 0);
+        //PlayerPrefs.DeleteAll();
+
+        unlockedLevels = PlayerPrefs.GetInt("UnlockedLevels", 1);
 
         for (int i = 0; i < levelObjects.Length; i++)
         {
-            if (unlockedLevels >= i)
+            if (unlockedLevels > i)
             {
                 levelObjects[i].levelButton.interactable = true;
+                int jars = PlayerPrefs.GetInt("jars" + i.ToString(), 0);
+
+                for (int j = 0; j < jars; j++)
+                {
+                    levelObjects[i].jars[j].sprite = fullJarSprite;
+                }
             }
         }
     }
