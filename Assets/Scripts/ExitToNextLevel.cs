@@ -19,7 +19,8 @@ public class ExitToNextLevel : MonoBehaviour
             PlayerPrefs.SetInt("UnlockedLevels", LevelsMenuController.unlockedLevels);
 
             complete = true;
-            gameController.LoadNextLevel();
+            gameController.CompleteLevel();
+            //gameController.LoadNextLevel();
         }
     }
 

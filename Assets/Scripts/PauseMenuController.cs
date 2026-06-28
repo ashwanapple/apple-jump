@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject PauseMenuScreen;
+    
     public Button PauseButton;
+    public GameObject PauseMenuScreen;
     public GameObject GameOverScreen;
+    public GameObject LevelCompleteScreen;
 
     void Update()
     {
-        if (PauseMenuScreen.activeSelf || GameOverScreen.activeSelf)
+        if (PauseMenuScreen.activeSelf || GameOverScreen.activeSelf || LevelCompleteScreen.activeSelf)
         {
             PauseButton.interactable = false;
         }

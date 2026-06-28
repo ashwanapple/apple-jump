@@ -7,33 +7,33 @@ public class Jar : MonoBehaviour, Item
     public static int worth = 1;
     private bool isCollected = false;
 
+    void Start()
+    {
+        GameController.OnReset += ResetItems;
+    }
+
+    void OnDestroy()
+    {
+        GameController.OnReset -= ResetItems;
+    }
 
     public void Collect()
     {
         if (!isCollected)
         {
             OnJarCollect.Invoke(worth);
-            gameObject.SetActive(false);
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
             isCollected = true;
         }
         
     }
 
-    void OnEnable()
-    {
-        GameController.OnReset += ResetItems;
-    }
-
-    void OnDisable()
-    {
-        GameController.OnReset -= ResetItems;
-    }
-
-    // remove Start()
 
     void ResetItems()
     {
-        gameObject.SetActive(true);
+        GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<Collider2D>().enabled = true;
         isCollected = false;
     }
 }

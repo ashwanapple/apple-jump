@@ -15,6 +15,11 @@ public class GameController : MonoBehaviour
 
     public GameObject gameOverScreen;
     public GameObject pauseMenuScreen;
+    public GameObject completeLevelPanel;
+
+    public List<GameObject> jars;
+    public Sprite fullJarSprite;
+    public Sprite emptyJarSprite;
 
     public static event Action OnReset;
 
@@ -32,8 +37,11 @@ public class GameController : MonoBehaviour
         progressNum = 0;
         progressSlider.value = 0;
         progressSlider.maxValue = 3;
+
         gameOverScreen.SetActive(false);
         pauseMenuScreen.SetActive(false);
+        completeLevelPanel.SetActive(false);
+
         PlayerHealth.onPlayerDied += GameOverScreen;
         Jar.OnJarCollect += IncreaseProgressAmount;
 
@@ -51,15 +59,30 @@ public class GameController : MonoBehaviour
         gameOverScreen.SetActive(true);
     }
 
+    public void CompleteLevel()
+    {
+        for (int j = 0; j < progressNum; j++)
+        {
+            jars[j].GetComponent<Image>().sprite = fullJarSprite;
+        }
+
+        completeLevelPanel.SetActive(true);
+        Time.timeScale = 0f;
+
+    }
+
     // resets ENTIRE level
     public void ResetLevel()
     {
         gameOverScreen.SetActive(false);
+        completeLevelPanel.SetActive(false);
         LoadLevel(currentLevelIndex);
     }
 
     public void ExitToMenu()
     {
+        completeLevelPanel.SetActive(false);
+        Time.timeScale = 1f;
         SceneManager.LoadScene("LevelsScene");
     }
 
@@ -68,14 +91,12 @@ public class GameController : MonoBehaviour
     {
         progressNum += amount;
         progressSlider.value = progressNum;
-        //if (progressNum >= 3)
-        //{
-        //    // mark as bonus all collected at the end? or for main menu
-        //}
     }
 
     void LoadLevel(int level)
     {
+        Time.timeScale = 1f;
+        completeLevelPanel.SetActive(false);
         levels[currentLevelIndex].SetActive(false);
         currentLevelIndex = level;
         levels[level].SetActive(true);
@@ -90,9 +111,14 @@ public class GameController : MonoBehaviour
         
     }
 
-    // resets player and progress bar
+    // resets player and jar progress
     public void ResetLevelComponents()
     {
+        for (int j = 0; j < jars.Count; j++)
+        {
+            jars[j].GetComponent<Image>().sprite = emptyJarSprite;
+        }
+
         player.transform.position = new Vector3(-1, 0, 0);
         OnReset?.Invoke();
         progressNum = 0;
