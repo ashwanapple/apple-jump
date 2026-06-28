@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
@@ -55,6 +56,11 @@ public class GameController : MonoBehaviour
     {
         gameOverScreen.SetActive(false);
         LoadLevel(currentLevelIndex);
+    }
+
+    public void ExitToMenu()
+    {
+        SceneManager.LoadScene("LevelsScene");
     }
 
 

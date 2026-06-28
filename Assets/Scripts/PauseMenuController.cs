@@ -1,10 +1,26 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject PauseMenuScreen;
+    public Button PauseButton;
+    public GameObject GameOverScreen;
+
+    void Update()
+    {
+        if (PauseMenuScreen.activeSelf || GameOverScreen.activeSelf)
+        {
+            PauseButton.interactable = false;
+        }
+        else
+        {
+            PauseButton.interactable = true;
+        }
+    }
+
 
     public void Pause()
     {
