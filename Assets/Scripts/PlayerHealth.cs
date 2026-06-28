@@ -30,8 +30,6 @@ public class PlayerHealth : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log("PlayerHealth subscribed to OnReset");
-
         GameController.OnReset += ResetPlayer;
     }
 
@@ -136,7 +134,6 @@ public class PlayerHealth : MonoBehaviour
         animator.Play("Idle");
 
         GetComponent<PlayerMovement>().enabled = true;
-        Debug.Log("ResetPlayer called, movement enabled: " + GetComponent<PlayerMovement>().enabled);
 
     }
 

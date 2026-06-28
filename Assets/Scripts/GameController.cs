@@ -36,9 +36,6 @@ public class GameController : MonoBehaviour
         PlayerHealth.onPlayerDied += GameOverScreen;
         Jar.OnJarCollect += IncreaseProgressAmount;
 
-        Debug.Log("GameController Start, currentLevelIndex: " + currentLevelIndex);
-
-
     }
 
     void OnDestroy()
@@ -94,9 +91,6 @@ public class GameController : MonoBehaviour
         OnReset?.Invoke();
         progressNum = 0;
         progressSlider.value = 0;
-
-        Debug.Log("ResetLevelComponents called, OnReset has listeners: " + (OnReset != null));
-
 
     }
 }

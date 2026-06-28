@@ -20,11 +20,13 @@ public class PauseMenu : MonoBehaviour
 
     public void Levels()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("LevelsScene");
     }
 
     public void Exit()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("StartScene");
     }
 }

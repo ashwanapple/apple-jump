@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, Damagers
@@ -28,6 +29,8 @@ public class Enemy : MonoBehaviour, Damagers
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         currentPoint = pointA.transform;
+
+        GameController.OnReset += ResetEnemy;
         
     }
 
@@ -127,5 +130,24 @@ public class Enemy : MonoBehaviour, Damagers
         }
         anim.speed = 0f;
 
+    }
+
+    private void ResetEnemy()
+    {
+        currentHealth = maxHealth;
+        isDead = false;
+
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.linearVelocity = Vector2.zero;
+
+        anim.speed = 1f;
+
+        StopAllCoroutines();
+        
+    }
+
+    void OnDestroy()
+    {
+        GameController.OnReset -= ResetEnemy;
     }
 }

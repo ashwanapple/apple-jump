@@ -11,6 +11,7 @@ public class KnifeSpawner : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnLoop());
+        GameController.OnReset += ResetSpawner;
     }
 
     IEnumerator SpawnLoop()
@@ -21,4 +22,17 @@ public class KnifeSpawner : MonoBehaviour
             yield return new WaitForSeconds(timer);
         }
     }
+
+    private void ResetSpawner()
+    {
+        StopAllCoroutines(); // kill current loop
+        StartCoroutine(SpawnLoop()); // start new loop for new level
+
+    }
+
+    void OnDestroy()
+    {
+        GameController.OnReset -= ResetSpawner;
+    }
 }
+
