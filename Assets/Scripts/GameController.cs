@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
     public GameObject pauseMenuScreen;
     public GameObject completeLevelPanel;
 
+    public Button nextLevelButton;
+
     public List<GameObject> jars;
     public Sprite fullJarSprite;
     public Sprite emptyJarSprite;
@@ -67,6 +69,12 @@ public class GameController : MonoBehaviour
         }
 
         completeLevelPanel.SetActive(true);
+
+        if (currentLevelIndex == levels.Count - 1)
+        {
+            nextLevelButton.gameObject.SetActive(false);
+        }
+
         Time.timeScale = 0f;
 
     }
@@ -114,6 +122,7 @@ public class GameController : MonoBehaviour
     // resets player and jar progress
     public void ResetLevelComponents()
     {
+        nextLevelButton.gameObject.SetActive(true);
         for (int j = 0; j < jars.Count; j++)
         {
             jars[j].GetComponent<Image>().sprite = emptyJarSprite;
