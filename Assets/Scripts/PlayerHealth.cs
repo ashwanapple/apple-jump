@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using Unity.Cinemachine;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -19,13 +20,15 @@ public class PlayerHealth : MonoBehaviour
     public static event Action onPlayerDied;
 
     public HealthUI healthUI;
+
+    CinemachineImpulseSource impulseSource;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = maxHealth;
         healthUI.SetMaxHealth(maxHealth);
-
-        
+        impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
     void Awake()
@@ -78,6 +81,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int dmg, Trap trap)
     {
         currentHealth -= dmg;
+        impulseSource.GenerateImpulse();
         healthUI.UpdateHealth(currentHealth);
 
         if (currentHealth <= 0)
