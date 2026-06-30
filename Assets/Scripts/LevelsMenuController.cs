@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,17 +28,23 @@ public class LevelsMenuController : MonoBehaviour
 
         unlockedLevels = PlayerPrefs.GetInt("UnlockedLevels", 1);
 
+
         for (int i = 0; i < levelObjects.Length; i++)
         {
-            if (unlockedLevels > i)
+            bool isUnlocked = unlockedLevels > i;
+            
+            levelObjects[i].levelButton.interactable = isUnlocked;
+            levelObjects[i].levelNumText.SetActive(isUnlocked);
+
+            if (isUnlocked)
             {
-                levelObjects[i].levelButton.interactable = true;
                 int jars = PlayerPrefs.GetInt("jars" + i.ToString(), 0);
 
                 for (int j = 0; j < jars; j++)
                 {
                     levelObjects[i].jars[j].sprite = fullJarSprite;
                 }
+                
             }
         }
     }
