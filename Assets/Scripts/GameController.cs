@@ -8,6 +8,9 @@ public class GameController : MonoBehaviour
 {
     public static int progressNum;
     public Slider progressSlider;
+    public Sprite sliderEmptySprite;
+    public Sprite sliderFullSprite;
+    public Image sliderHandleImage;
 
     public GameObject player;
     public List<GameObject> levels;
@@ -99,6 +102,22 @@ public class GameController : MonoBehaviour
     {
         progressNum += amount;
         progressSlider.value = progressNum;
+        UpdateSliderVisual();
+    }
+
+    void UpdateSliderVisual()
+    {
+        if (sliderHandleImage != null)
+        {
+            bool isFull = progressSlider.value >= progressSlider.maxValue;
+            if (isFull)
+            {
+                sliderHandleImage.sprite = fullJarSprite;
+            } else
+            {
+                sliderHandleImage.sprite = emptyJarSprite;
+            }
+        }
     }
 
     void LoadLevel(int level)
@@ -132,6 +151,6 @@ public class GameController : MonoBehaviour
         OnReset?.Invoke();
         progressNum = 0;
         progressSlider.value = 0;
-
+        UpdateSliderVisual();
     }
 }
