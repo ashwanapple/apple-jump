@@ -20,7 +20,7 @@ public class SwipeController : MonoBehaviour, IEndDragHandler
 
     [SerializeField] Button prevBtn, nextBtn;
 
-    private void Awake()
+    void Awake()
     {
         currentPage = 1;
         targetPos = levelsPageRect.localPosition;

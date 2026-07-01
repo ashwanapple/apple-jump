@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour
     public Image sliderHandleImage;
 
     public GameObject player;
+
+    public Transform levelsParent;
     public List<GameObject> levels;
     private int currentLevelIndex = 0;
 
@@ -28,9 +30,14 @@ public class GameController : MonoBehaviour
 
     public static event Action OnReset;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
+        levels = new List<GameObject>();
+        foreach (Transform child in levelsParent)
+        {
+            levels.Add(child.gameObject);
+        }
+
         currentLevelIndex = LevelsMenuController.currentLev;
 
         for (int i = 0; i < levels.Count; i++)
@@ -38,6 +45,10 @@ public class GameController : MonoBehaviour
             levels[i].SetActive(i == currentLevelIndex);
 
         }
+    }
+
+    void Start()
+    {
 
         progressNum = 0;
         progressSlider.value = 0;

@@ -37,6 +37,8 @@ public class SecretArea : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (!gameObject.activeInHierarchy) return; // if player dies in hidden area, does not try to start coroutine
+
         if (collision.gameObject.CompareTag("Player"))
         {
 
