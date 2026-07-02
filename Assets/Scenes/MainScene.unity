@@ -6532,6 +6532,7 @@ MonoBehaviour:
   - {fileID: 1324073561}
   - {fileID: 592240842}
   gameOverScreen: {fileID: 602062371}
+  animator: {fileID: 765853513}
   pauseMenuScreen: {fileID: 832598528}
   completeLevelPanel: {fileID: 46674554}
   nextLevelButton: {fileID: 545692675}
@@ -8505,7 +8506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &602062372
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11757,7 +11758,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -11771,7 +11772,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 24905812}
   m_FillRect: {fileID: 49934703}
   m_HandleRect: {fileID: 24905810}
