@@ -44,8 +44,10 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocity.y);
 
         }
+
         GroundCheck();
         Gravity();
+
 
         // flips sprite depending on direction
         float horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -60,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         animator.SetFloat("yVelocity", rb.linearVelocity.y);
-        animator.SetFloat("magnitude", rb.linearVelocity.magnitude);
+        animator.SetFloat("magnitude", Mathf.Abs(rb.linearVelocity.x));
         animator.SetBool("isGrounded", isGrounded);
 
     }
