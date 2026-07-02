@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,6 +20,8 @@ public class GameController : MonoBehaviour
     private int currentLevelIndex = 0;
 
     public GameObject gameOverScreen;
+    public Animator animator;
+
     public GameObject pauseMenuScreen;
     public GameObject completeLevelPanel;
 
@@ -72,7 +75,7 @@ public class GameController : MonoBehaviour
 
     void GameOverScreen()
     {
-        gameOverScreen.SetActive(true);
+        StartCoroutine(GameOverCoroutine());
     }
 
     public void CompleteLevel()
@@ -163,5 +166,22 @@ public class GameController : MonoBehaviour
         progressNum = 0;
         progressSlider.value = 0;
         UpdateSliderVisual();
+    }
+
+    private IEnumerator GameOverCoroutine()
+    {
+        yield return null;
+
+        while (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Death"))
+        {
+            yield return null;
+        }
+
+        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+        {
+            yield return null;
+        }
+
+        gameOverScreen.SetActive(true);
     }
 }
